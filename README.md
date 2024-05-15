@@ -1,4 +1,4 @@
-**MEU PORTIFÓLIO - EM DESENVOLVIMENTO**
+# MEU PORTIFÓLIO
 **MOTIVO DA CRIAÇÃO:**
 
 Por ter muitos projetos de código e muitos de design, acabo mantendo dois portfólios separados. Com o objetivo de unificá-los, criei este projeto utilizando ReactJS e elementos da Material UI.
