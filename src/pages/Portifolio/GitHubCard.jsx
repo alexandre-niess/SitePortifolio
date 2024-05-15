@@ -75,7 +75,7 @@ function GitHubCard({ title, description, link, languages }) {
                 src="https://svgshare.com/i/15zL.svg"
                 sx={{ height: 30, width: 30 }}
                 alt="Logo"
-                margin="2px"
+                marginLeft="10px"
               />
             </Box>
             <Box>

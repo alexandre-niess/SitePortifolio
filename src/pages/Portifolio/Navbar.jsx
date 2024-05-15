@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import MenuItem from "@mui/material/MenuItem";
 import Drawer from "@mui/material/Drawer";
 import MenuIcon from "@mui/icons-material/Menu";
+import Voltar from "@mui/icons-material/ArrowBack";
 import { Link } from "react-router-dom";
 
 function Navbar() {
@@ -15,36 +16,54 @@ function Navbar() {
   };
 
   return (
-    <Box
-      id="navbar"
-      sx={{
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center", // Centraliza verticalmente os elementos
-        padding: "15px",
-        backgroundColor: "#443399",
-      }}
-    >
-      <Box sx={{ display: "flex", alignItems: "center" }}>
-        <Link
-          to="/SitePortifolio/"
-          style={{
-            textDecoration: "none",
+    <>
+      <Box
+        id="navbar"
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+          alignItems: "center", // Centraliza verticalmente os elementos
+          padding: "15px",
+          backgroundColor: "#443399",
+        }}
+      >
+        <Box sx={{ display: "flex", alignItems: "center" }}>
+          <Link
+            to="/SitePortifolio/"
+            style={{
+              textDecoration: "none",
+              display: "flex",
+              alignItems: "center",
+              color: "white",
+            }}
+          >
+            <img
+              id="logo"
+              src="https://svgshare.com/i/15z8.svg"
+              style={{ height: "15%", width: "15%", marginRight: "15px" }}
+            />
+            <Typography variant="h6">Portifólio</Typography>
+          </Link>
+        </Box>
+      </Box>
+      <Link to="/SitePortifolio/" style={{ textDecoration: "none" }}>
+        <Typography
+          variant="h6"
+          sx={{
+            fontSize: "1rem",
+            color: "#88AA55",
             display: "flex",
             alignItems: "center",
-            color: "white",
+            gap: "5px",
+            padding: "20px",
           }}
         >
-          <img
-            id="logo"
-            src="https://svgshare.com/i/15z8.svg"
-            style={{ height: "15%", width: "15%", marginRight: "15px" }}
-          />
-          <Typography variant="h6">Portifólio</Typography>
-        </Link>
-      </Box>
-    </Box>
+          <Voltar sx={{ height: "20px", width: "auto", color: "#88AA55" }} />{" "}
+          Voltar para a Home
+        </Typography>
+      </Link>
+    </>
   );
 }
 

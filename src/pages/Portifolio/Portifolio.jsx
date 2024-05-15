@@ -77,7 +77,6 @@ export function Portifolio() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          marginTop: "40px",
         }}
       >
         <ToggleButtonGroup
@@ -126,7 +125,7 @@ export function Portifolio() {
                       minHeight: "316px",
                     }}
                     allowFullScreen
-                    loading="lazy"
+                    loading="eager"
                     frameBorder="0"
                     allow="clipboard-write"
                     referrerPolicy="strict-origin-when-cross-origin"
