@@ -1,0 +1,30 @@
+.ticker-container {
+  overflow: hidden;
+  height: 50px; 
+  width: 100%; 
+}
+
+.ticker-wrap {
+  display: flex;
+  align-items: center;
+  animation: ticker 25s linear infinite;
+  will-change: transform;
+  padding: 8px;
+}
+
+.ticker-item {
+  margin-right: 20px; 
+  margin-left: 20px; 
+  white-space: nowrap;
+  font-size: 24px;
+}
+
+@keyframes ticker {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
