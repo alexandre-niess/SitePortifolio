@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material";
+import ReactGA from "react-ga4";
+
+ReactGA.initialize("G-0V46XG8971");
 
 function App() {
   const [count, setCount] = useState(0);
@@ -24,6 +27,8 @@ function App() {
       fontFamily: "Poppins, sans-serif",
     },
   });
+
+  ReactGA.send({ hitType: "pageview", page: window.location.pathname });
 
   return (
     <>

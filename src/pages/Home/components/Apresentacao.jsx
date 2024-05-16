@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react"; // Importando useEffect diretamente
 import { Box, Button, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-import ReactGA from "react-ga";
-
-const TRACKING_ID = "G-0V46XG8971"; // Substitua com seu ID de rastreamento real
-ReactGA.initialize(TRACKING_ID);
 
 export default function Apresentacao() {
   const [isMobile, setIsMobile] = useState(false); // Uso de useState diretamente
@@ -20,10 +16,6 @@ export default function Apresentacao() {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
-
-  useEffect(() => {
-    ReactGA.pageview("/home"); // Rastreia a página inicial
   }, []);
 
   const scrollToSection = (sectionId) => {
