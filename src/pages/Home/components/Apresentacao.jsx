@@ -1,22 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react"; // Importando useEffect diretamente
 import { Box, Button, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import ReactGA from "react-ga";
+
+const TRACKING_ID = "G-0V46XG8971"; // Substitua com seu ID de rastreamento real
+ReactGA.initialize(TRACKING_ID);
 
 export default function Apresentacao() {
-  const [isMobile, setIsMobile] = React.useState(false);
+  const [isMobile, setIsMobile] = useState(false); // Uso de useState diretamente
 
-  React.useEffect(() => {
+  useEffect(() => {
     function handleResize() {
       setIsMobile(window.innerWidth < 600);
     }
 
     handleResize();
-
     window.addEventListener("resize", handleResize);
 
     return () => {
       window.removeEventListener("resize", handleResize);
     };
+  }, []);
+
+  useEffect(() => {
+    ReactGA.pageview("/home"); // Rastreia a página inicial
   }, []);
 
   const scrollToSection = (sectionId) => {
@@ -28,10 +35,8 @@ export default function Apresentacao() {
         top: targetScroll,
         behavior: "smooth",
       });
-      setOpenDrawer(false);
     }
   };
-
   return (
     <>
       <Box
