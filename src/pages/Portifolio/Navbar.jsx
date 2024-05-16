@@ -15,6 +15,18 @@ function Navbar() {
     setOpenDrawer(newOpen);
   };
 
+  const scrollToSection = (sectionId) => {
+    const sectionElement = document.getElementById(sectionId);
+    const offset = 128;
+    if (sectionElement) {
+      const targetScroll = sectionElement.offsetTop - offset;
+      window.scrollTo({
+        top: targetScroll,
+        behavior: 'smooth',
+      });
+      setOpenDrawer(false);
+    }
+  };
   return (
     <>
       <Box
@@ -45,7 +57,9 @@ function Navbar() {
             />
             <Typography variant="h6">Portifólio</Typography>
           </Link>
+
         </Box>
+        <Button variant='contained' color='secondary' onClick={() => scrollToSection('contato')} sx={{ borderRadius: '100px', color: '#fff' }}>Contato</Button>
       </Box>
       <Link to="/SitePortifolio/" style={{ textDecoration: "none" }}>
         <Typography

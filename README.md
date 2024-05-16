@@ -1,8 +1,34 @@
-# React + Vite
+# MEU PORTIFÓLIO
+**MOTIVO DA CRIAÇÃO:**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Por ter muitos projetos de código e muitos de design, acabo mantendo dois portfólios separados. Com o objetivo de unificá-los, criei este projeto utilizando ReactJS e elementos da Material UI.
 
-Currently, two official plugins are available:
+Você pode acessar a aplicação online neste link: [SitePortifolio](https://alexandre-niess.github.io/SitePortifolio)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Como rodar?**
+
+*Certifique-se de ter o Node.js na versão mais recente instalado na sua máquina!*
+
+**Passo-a-passo:**
+
+1. Clone este repositório.
+2. Abra-o em sua IDE de preferência.
+3. Rode o comando `npm i` para instalar todas as dependências e gerar a pasta `node_modules` automaticamente.
+4. Execute o comando `npm run dev` para iniciar o servidor local.
+
+**Para deploy:**
+
+Apenas troque a URL da homepage na pasta `package.json`, seguindo o padrão:
+
+```
+"homepage": "https://NUME-DE-USUARIO.github.io/NOME-DO-REPOSITORIO"
+```
+
+Após essa alteração, basta executar:
+
+```
+npm run deploy
+```
+
+A aplicação será enviada para produção.
+
