@@ -93,19 +93,22 @@ export function Portifolio() {
           alignItems: "center",
         }}
       >
-        <Box sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          marginTop: "40px",
-          marginBottom: "20px",
-          textAlign: "center",
-        }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            marginTop: "40px",
+            marginBottom: "20px",
+            textAlign: "center",
+          }}
+        >
           <Typography component="h2" variant="h4" sx={{ marginBottom: "10px" }}>
             Portifólio
           </Typography>
           <Typography variant="body1" color="text.secondary">
-            Esse é o meu portifólio, onde eu concentro os meus principais projetos.
+            Esse é o meu portifólio, onde eu concentro os meus principais
+            projetos.
           </Typography>
         </Box>
         <ToggleButtonGroup
@@ -126,18 +129,17 @@ export function Portifolio() {
               variant="outlined"
               href="https://github.com/alexandre-niess"
               color="secondary"
-              onClick={() => scrollToSection('contato')}
-              sx={{ borderRadius: '100px', marginTop: '40px' }}
+              onClick={() => scrollToSection("contato")}
+              sx={{ borderRadius: "100px", marginTop: "40px" }}
             >
               Ver perfil no GitHub
               <img
                 src="https://svgshare.com/i/167Y.svg"
                 alt="GitHub Icon"
-                style={{ marginLeft: '8px', width: '18px', height: 'auto' }}
+                style={{ marginLeft: "8px", width: "18px", height: "auto" }}
               />
             </Button>
             <Box sx={{ width: "100%", overflow: "hidden", marginTop: "40px" }}>
-
               <Grid container spacing={1}>
                 {cardData.map((data, index) => (
                   <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
@@ -155,18 +157,17 @@ export function Portifolio() {
               href="https://www.behance.net/alexandrefersoa"
               variant="outlined"
               color="secondary"
-              onClick={() => scrollToSection('contato')}
-              sx={{ borderRadius: '100px', marginTop: '40px' }}
+              onClick={() => scrollToSection("contato")}
+              sx={{ borderRadius: "100px", marginTop: "40px" }}
             >
               Ver perfil no Behance
               <img
                 src="https://svgshare.com/i/167P.svg"
                 alt="Behance Icon"
-                style={{ marginLeft: '8px', width: '18px', height: 'auto' }}
+                style={{ marginLeft: "8px", width: "18px", height: "auto" }}
               />
             </Button>
             <Box sx={{ width: "100%", overflow: "hidden", marginTop: "40px" }}>
-
               <Grid container spacing={2}>
                 {[
                   "198581635",
@@ -180,19 +181,30 @@ export function Portifolio() {
                   "174653875",
                 ].map((id) => (
                   <Grid item xs={12} sm={6} md={4} lg={3} key={id}>
-                    <iframe
-                      src={`https://www.behance.net/embed/project/${id}?ilo0=1`}
+                    <div
                       style={{
                         width: "100%",
-                        height: "100%",
-                        minHeight: "316px",
+                        height: 0,
+                        paddingBottom: `${(158 / 202) * 100}%`, // Calculando a proporção
+                        position: "relative",
                       }}
-                      allowFullScreen
-                      loading="eager"
-                      frameBorder="0"
-                      allow="clipboard-write"
-                      referrerPolicy="strict-origin-when-cross-origin"
-                    ></iframe>
+                    >
+                      <iframe
+                        src={`https://www.behance.net/embed/project/${id}?ilo0=1`}
+                        style={{
+                          position: "absolute",
+                          width: "100%",
+                          height: "100%",
+                          top: 0,
+                          left: 0,
+                        }}
+                        allowFullScreen
+                        loading="eager"
+                        frameBorder="0"
+                        allow="clipboard-write"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                      ></iframe>
+                    </div>
                   </Grid>
                 ))}
               </Grid>
@@ -200,7 +212,7 @@ export function Portifolio() {
           </>
         )}
         <Footer />
-      </Container >
+      </Container>
     </>
   );
 }
