@@ -22,7 +22,7 @@ function Navbar() {
       const targetScroll = sectionElement.offsetTop - offset;
       window.scrollTo({
         top: targetScroll,
-        behavior: 'smooth',
+        behavior: "smooth",
       });
       setOpenDrawer(false);
     }
@@ -55,11 +55,17 @@ function Navbar() {
               src="https://svgshare.com/i/15z8.svg"
               style={{ height: "15%", width: "15%", marginRight: "15px" }}
             />
-            <Typography variant="h6">Portifólio</Typography>
+            <Typography variant="h6">Portfólio</Typography>
           </Link>
-
         </Box>
-        <Button variant='contained' color='secondary' onClick={() => scrollToSection('contato')} sx={{ borderRadius: '100px', color: '#fff' }}>Contato</Button>
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={() => scrollToSection("contato")}
+          sx={{ borderRadius: "100px", color: "#fff" }}
+        >
+          Contato
+        </Button>
       </Box>
       <Link to="/SitePortifolio/" style={{ textDecoration: "none" }}>
         <Typography

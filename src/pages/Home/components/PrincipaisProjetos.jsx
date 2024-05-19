@@ -171,7 +171,7 @@ export default function PrincipaisProjetos() {
                     textDecoration: "none",
                   }}
                 >
-                  Ver portifólio completo
+                  Ver portfólio completo
                   <ChevronRightRoundedIcon
                     fontSize="small"
                     sx={{ mt: "1px", ml: "2px" }}

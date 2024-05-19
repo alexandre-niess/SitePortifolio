@@ -72,19 +72,19 @@ export default function Apresentacao() {
       >
         <Link to="portifolio" style={{ textDecoration: "none" }}>
           <Button
-            variant="outlined"
+            variant="contained"
             color="secondary"
             href="#sobre"
-            sx={{ borderRadius: "100px" }}
+            sx={{ borderRadius: "100px", color: "#fff" }}
           >
-            Portifólio
+            Portfólio
           </Button>
         </Link>
         <Button
-          variant="contained"
+          variant="outlined"
           color="secondary"
           href="#sobre"
-          sx={{ borderRadius: "100px", color: "#fff" }}
+          sx={{ borderRadius: "100px", color: "primary" }}
           onClick={() => scrollToSection("contato")}
         >
           Entrar em contato

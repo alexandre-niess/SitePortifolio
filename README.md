@@ -1,4 +1,5 @@
-# MEU PORTIFÓLIO
+# MEU PORTFÓLIO
+
 **MOTIVO DA CRIAÇÃO:**
 
 Por ter muitos projetos de código e muitos de design, acabo mantendo dois portfólios separados. Com o objetivo de unificá-los, criei este projeto utilizando ReactJS e elementos da Material UI.
@@ -7,7 +8,7 @@ Você pode acessar a aplicação online neste link: [SitePortifolio](https://ale
 
 **Como rodar?**
 
-*Certifique-se de ter o Node.js na versão mais recente instalado na sua máquina!*
+_Certifique-se de ter o Node.js na versão mais recente instalado na sua máquina!_
 
 **Passo-a-passo:**
 
@@ -31,4 +32,3 @@ npm run deploy
 ```
 
 A aplicação será enviada para produção.
-

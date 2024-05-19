@@ -10,7 +10,7 @@ import Footer from "./Footer";
 
 export function Portifolio() {
   useEffect(() => {
-    document.title = "Portifólio";
+    document.title = "Portfólio";
   }, []);
 
   const [alignment, setAlignment] = React.useState("web");
@@ -25,7 +25,7 @@ export function Portifolio() {
   const cardData = [
     {
       languages: ["ReactJS", "CSS"],
-      title: "Site Portifólio",
+      title: "Site Portfólio",
       link: "https://github.com/alexandre-niess/SitePortifolio",
       description: "Repositório em que estão os códigos desse site.",
     },
@@ -104,10 +104,10 @@ export function Portifolio() {
           }}
         >
           <Typography component="h2" variant="h4" sx={{ marginBottom: "10px" }}>
-            Portifólio
+            Portfólio
           </Typography>
           <Typography variant="body1" color="text.secondary">
-            Esse é o meu portifólio, onde eu concentro os meus principais
+            Esse é o meu portfólio, onde eu concentro os meus principais
             projetos.
           </Typography>
         </Box>
