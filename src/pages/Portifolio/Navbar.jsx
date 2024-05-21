@@ -82,6 +82,7 @@ function Navbar() {
             alignItems: "center",
             gap: "5px",
             padding: "20px",
+            marginTop: "70px",
           }}
         >
           <Voltar sx={{ height: "20px", width: "auto", color: "#88AA55" }} />{" "}
