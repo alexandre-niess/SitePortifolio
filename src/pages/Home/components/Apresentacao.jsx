@@ -37,7 +37,7 @@ export default function Apresentacao() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          marginTop: "80px",
+          marginTop: "200px",
         }}
       >
         <Typography
@@ -101,7 +101,7 @@ export default function Apresentacao() {
       >
         <Box
           component="img"
-          src="https://i.im.ge/2024/05/09/Zf6RC8.myself.png"
+          src="https://i.im.ge/2024/05/21/KuzXLY.novaimgsite-1.png"
           width={{ xs: "80%", sm: "60%", md: "50%", lg: "40%" }}
         />
       </Box>

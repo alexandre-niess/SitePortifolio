@@ -204,11 +204,11 @@ export default function PrincipaisProjetos() {
                   borderColor: (theme) => {
                     if (theme.palette.mode === "light") {
                       return selectedItemIndex === index
-                        ? "secondary.light"
+                        ? "primary.light"
                         : "grey.200";
                     }
                     return selectedItemIndex === index
-                      ? "secondary.dark"
+                      ? "primary.dark"
                       : "grey.800";
                   },
                 }}
@@ -228,11 +228,11 @@ export default function PrincipaisProjetos() {
                       color: (theme) => {
                         if (theme.palette.mode === "light") {
                           return selectedItemIndex === index
-                            ? "secondary.main"
+                            ? "primary.main"
                             : "grey.300";
                         }
                         return selectedItemIndex === index
-                          ? "secondary.main"
+                          ? "primary.main"
                           : "grey.700";
                       },
                     }}

@@ -35,29 +35,34 @@ function Navbar() {
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-between",
-          alignItems: "center", // Centraliza verticalmente os elementos
+          alignItems: "center",
           padding: "15px",
           backgroundColor: "#443399",
+          position: "fixed", // Adiciona fixação ao topo
+          width: "100%", // Garante que a barra de navegação ocupe toda a largura
+          top: 0, // Alinha a barra de navegação ao topo
+          zIndex: 100, // Garante que a barra de navegação esteja acima de outros elementos
+          boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.2)", // Adiciona sombra na base
         }}
       >
-        <Box sx={{ display: "flex", alignItems: "center" }}>
-          <Link
-            to="/SitePortifolio/"
-            style={{
-              textDecoration: "none",
-              display: "flex",
-              alignItems: "center",
-              color: "white",
-            }}
-          >
-            <img
-              id="logo"
-              src="https://svgshare.com/i/15z8.svg"
-              style={{ height: "15%", width: "15%", marginRight: "15px" }}
-            />
-            <Typography variant="h6">Portfólio</Typography>
-          </Link>
-        </Box>
+        <Link
+          to="/SitePortifolio/"
+          style={{
+            textDecoration: "none",
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            color: "white",
+          }}
+        >
+          <img
+            id="logo"
+            src="https://svgshare.com/i/15z8.svg"
+            style={{ height: "15%", width: "15%", marginRight: "15px" }}
+          />
+          <Typography variant="h6">Portfólio</Typography>
+        </Link>
+
         <Button
           variant="contained"
           color="secondary"
