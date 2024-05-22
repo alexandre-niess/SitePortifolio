@@ -7,6 +7,8 @@ import GitHubCard from "./GitHubCard";
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import Footer from "./Footer";
+import { useState } from "react";
+import CircularProgress from "@mui/material/CircularProgress";
 
 export function Portifolio() {
   useEffect(() => {
@@ -20,6 +22,13 @@ export function Portifolio() {
       setAlignment(newAlignment);
     }
   };
+
+  const [loading, setLoading] = useState(true);
+
+  const handleLoad = () => {
+    setLoading(false);
+  };
+
 
   // Dados simulados para cada card, incluindo as linguagens
   const cardData = [
@@ -178,7 +187,7 @@ export function Portifolio() {
                   "174654493",
                   "174654093",
                   "174653973",
-                  "174653875",
+                  "174653875"
                 ].map((id) => (
                   <Grid item xs={12} sm={6} md={4} lg={3} key={id}>
                     <div
@@ -186,9 +195,21 @@ export function Portifolio() {
                         width: "100%",
                         height: 0,
                         paddingBottom: `${(158 / 202) * 100}%`, // Calculando a proporção
-                        position: "relative",
+                        position: "relative"
                       }}
                     >
+                      {loading && (
+                        <div
+                          style={{
+                            position: "absolute",
+                            top: "50%",
+                            left: "50%",
+                            transform: "translate(-50%, -50%)"
+                          }}
+                        >
+                          <CircularProgress />
+                        </div>
+                      )}
                       <iframe
                         src={`https://www.behance.net/embed/project/${id}?ilo0=1`}
                         style={{
@@ -197,7 +218,9 @@ export function Portifolio() {
                           height: "100%",
                           top: 0,
                           left: 0,
+                          display: loading ? "none" : "block"
                         }}
+                        onLoad={handleLoad}
                         allowFullScreen
                         loading="eager"
                         frameBorder="0"
