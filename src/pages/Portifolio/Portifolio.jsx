@@ -141,7 +141,7 @@ export function Portifolio() {
               onClick={() => scrollToSection("contato")}
               sx={{ borderRadius: "100px", marginTop: "40px" }}
             >
-              Ver perfil no GitHub
+              Ver no GitHub
               <img
                 src="https://svgshare.com/i/167Y.svg"
                 alt="GitHub Icon"
@@ -169,7 +169,7 @@ export function Portifolio() {
               onClick={() => scrollToSection("contato")}
               sx={{ borderRadius: "100px", marginTop: "40px" }}
             >
-              Ver perfil no Behance
+              Ver no Behance
               <img
                 src="https://svgshare.com/i/167P.svg"
                 alt="Behance Icon"
