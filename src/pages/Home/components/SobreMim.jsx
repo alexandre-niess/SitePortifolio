@@ -52,7 +52,7 @@ export default function SobreMim() {
                 gap: "8px",
               }}
             >
-              Ver portfólio
+              Portfólio
             </Button>
           </Link>
         </Box>

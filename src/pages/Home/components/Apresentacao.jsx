@@ -87,7 +87,7 @@ export default function Apresentacao() {
           sx={{ borderRadius: "100px", color: "primary" }}
           onClick={() => scrollToSection("contato")}
         >
-          Entrar em contato
+          Contato
         </Button>
       </Box>
 
