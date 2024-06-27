@@ -4,10 +4,11 @@ import PDF from "@mui/icons-material/PictureAsPdf";
 import Container from "@mui/material/Container";
 
 // Open PDF in browser
+// Open PDF in browser
 function openPDF() {
   // Substitua o ID do arquivo anterior pelo novo ID do arquivo fornecido no link
   window.open(
-    "https://drive.google.com/uc?export=download&id=18AlTRlT1u-v6_7zLEBdmkH44hLWWr7ai",
+    "https://drive.google.com/uc?export=download&id=1Z_9PdF_JWOMPRjjhjtWjarbda9zyeiMW",
     "_blank"
   );
 }
