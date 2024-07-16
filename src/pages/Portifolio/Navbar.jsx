@@ -46,7 +46,7 @@ function Navbar() {
         }}
       >
         <Link
-          to="/SitePortifolio/"
+          to="/"
           style={{
             textDecoration: "none",
             display: "flex",
@@ -72,7 +72,7 @@ function Navbar() {
           Contato
         </Button>
       </Box>
-      <Link to="/SitePortifolio/" style={{ textDecoration: "none" }}>
+      <Link to="/" style={{ textDecoration: "none" }}>
         <Typography
           variant="h6"
           sx={{
