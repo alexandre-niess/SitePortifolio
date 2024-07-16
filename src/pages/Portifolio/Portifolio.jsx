@@ -175,29 +175,15 @@ export function Portifolio() {
                           position: "relative",
                         }}
                       >
-                        {loading && (
-                          <div
-                            style={{
-                              position: "absolute",
-                              top: "50%",
-                              left: "50%",
-                              transform: "translate(-50%, -50%)",
-                            }}
-                          >
-                            <CircularProgress />
-                          </div>
-                        )}
                         <iframe
-                          src={`https://www.behance.net/embed/project/${project.id}?ilo0=1`}
+                          src={`https://www.behance.net/embed/project/${project.behanceId}?ilo0=1`}
                           style={{
                             position: "absolute",
                             width: "100%",
                             height: "100%",
                             top: 0,
                             left: 0,
-                            display: loading ? "none" : "block",
                           }}
-                          onLoad={() => setLoading(false)}
                           allowFullScreen
                           loading="eager"
                           frameBorder="0"

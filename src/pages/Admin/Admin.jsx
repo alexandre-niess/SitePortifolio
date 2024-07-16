@@ -59,7 +59,7 @@ export function Admin() {
       try {
         const projectQuery = query(
           collection(db, "projects"),
-          orderBy("posicao")
+          orderBy("posicao", "asc") // Ordenar por posicao em ordem crescente
         );
         const querySnapshot = await getDocs(projectQuery);
         const projects = querySnapshot.docs.map((doc) => ({
@@ -72,9 +72,11 @@ export function Admin() {
         const langs = langSnapshot.docs.map((doc) => doc.data().name);
         setLanguagesData(langs);
 
-        const behanceSnapshot = await getDocs(
-          collection(db, "behanceProjects")
+        const behanceQuery = query(
+          collection(db, "behanceProjects"),
+          orderBy("posicao", "asc") // Ordenar por posicao em ordem crescente
         );
+        const behanceSnapshot = await getDocs(behanceQuery);
         const behanceProjects = behanceSnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
@@ -129,7 +131,7 @@ export function Admin() {
   const handleEditBehanceOpen = (id) => {
     const project = behanceProjects.find((proj) => proj.id === id);
     setCurrentId(id);
-    setBehanceId(project.id);
+    setBehanceId(project.behanceId); // Use the correct field for Behance ID
     setPosicao(project.posicao);
     setEditMode(true);
     setBehanceOpen(true);
@@ -199,7 +201,7 @@ export function Admin() {
   const handleSaveBehance = async () => {
     try {
       const newBehanceProject = {
-        id: behanceId,
+        behanceId, // Save the Behance ID correctly
         posicao,
         createdAt: serverTimestamp(),
       };
@@ -425,7 +427,7 @@ export function Admin() {
                     </div>
                   )}
                   <iframe
-                    src={`https://www.behance.net/embed/project/${project.id}?ilo0=1`}
+                    src={`https://www.behance.net/embed/project/${project.behanceId}?ilo0=1`} // Use the correct field for Behance ID
                     style={{
                       position: "absolute",
                       width: "100%",
@@ -542,7 +544,7 @@ export function Admin() {
           <DialogContent>
             <TextField
               margin="dense"
-              label="ID do Projeto (Behance)"
+              label="Código do Behance"
               fullWidth
               variant="outlined"
               value={behanceId}
