@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardActionArea, Typography, Box, Button } from "@mui/material";
+import { Card, CardActionArea, Typography, Box, Chip } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const themeGitHub = createTheme({
@@ -29,6 +29,7 @@ function getColorForLanguage(language) {
     HTML: "#EC6432",
     CSS: "#0084C5",
     JavaScript: "#EAB334",
+    Markdown: "#0084C5",
   };
 
   return colors[language] || "default";
@@ -45,6 +46,7 @@ function GitHubCard({ title, description, link, languages }) {
       ? descricao.substring(0, 126) + "..."
       : descricao;
   };
+
   return (
     <ThemeProvider theme={themeGitHub}>
       <Card sx={{ maxWidth: 345, m: 0.5, bgcolor: "#0F131A" }}>
@@ -98,17 +100,16 @@ function GitHubCard({ title, description, link, languages }) {
                 }}
               >
                 {languages.map((language) => (
-                  <Button
+                  <Chip
                     key={language}
-                    variant="contained"
+                    label={language}
                     sx={{
                       borderRadius: "100px",
                       backgroundColor: getColorForLanguage(language),
+                      color: "#fff",
                       textTransform: "none",
                     }}
-                  >
-                    {language}
-                  </Button>
+                  />
                 ))}
               </Box>
             </Box>
