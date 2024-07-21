@@ -1,6 +1,14 @@
 import React from "react";
-import { Card, CardActionArea, Typography, Box, Chip } from "@mui/material";
+import {
+  Card,
+  CardActionArea,
+  Typography,
+  Box,
+  Chip,
+  IconButton,
+} from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import EditIcon from "@mui/icons-material/Edit";
 
 const themeGitHub = createTheme({
   typography: {
@@ -19,7 +27,6 @@ const themeGitHub = createTheme({
   },
 });
 
-// Definição da função getColorForLanguage
 function getColorForLanguage(language) {
   if (language === "C++") return "#0084C5";
   const colors = {
@@ -35,8 +42,7 @@ function getColorForLanguage(language) {
   return colors[language] || "default";
 }
 
-function GitHubCard({ title, description, link, languages }) {
-  // Função que ajusta o tamanho do título
+function CardAdmin({ id, title, description, link, languages, onEdit }) {
   const tituloAjustado = (titulo) => {
     return titulo.length > 40 ? titulo.substring(0, 20) + "..." : titulo;
   };
@@ -72,13 +78,15 @@ function GitHubCard({ title, description, link, languages }) {
               }}
             >
               <Typography variant="body1">{tituloAjustado(title)}</Typography>
-              <Box
-                component="img"
-                src="https://svgshare.com/i/15zL.svg"
-                sx={{ height: 30, width: 30 }}
-                alt="Logo"
-                marginLeft="10px"
-              />
+              <Box />
+              <IconButton
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onEdit(id);
+                }}
+              >
+                <EditIcon sx={{ color: "#fff" }} />
+              </IconButton>
             </Box>
             <Box>
               <Typography variant="body2" sx={{ color: "#8D95A1" }}>
@@ -120,4 +128,4 @@ function GitHubCard({ title, description, link, languages }) {
   );
 }
 
-export default GitHubCard;
+export default CardAdmin;

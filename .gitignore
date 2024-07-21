@@ -22,7 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-firebaseConfig.js
-.firebaserc
+
+.firebase
 firebase.json
-hosting.ZGlzdA.cache
+firebase-debug.log
+.firebaserc
+firebaseConfig.js

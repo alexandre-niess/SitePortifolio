@@ -70,7 +70,7 @@ export default function Apresentacao() {
           gap: "20px",
         }}
       >
-        <Link to="portifolio" style={{ textDecoration: "none" }}>
+        <Link to="portfolio" style={{ textDecoration: "none" }}>
           <Button
             variant="contained"
             color="secondary"

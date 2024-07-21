@@ -92,7 +92,7 @@ function Navbar() {
       }}
     >
       <Link
-        to="/SitePortifolio/"
+        to="/portfolio"
         style={{
           textDecoration: "none",
           display: "flex",
@@ -239,7 +239,7 @@ function Navbar() {
           </Typography>
         </MenuItem>
         <MenuItem sx={{ py: "6px", px: "12px" }}>
-          <Link to="portifolio" style={{ textDecoration: "none" }}>
+          <Link to="/portfolio" style={{ textDecoration: "none" }}>
             <Button
               variant="contained"
               color="secondary"
