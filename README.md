@@ -17,18 +17,3 @@ _Certifique-se de ter o Node.js na versão mais recente instalado na sua máquin
 3. Rode o comando `npm i` para instalar todas as dependências e gerar a pasta `node_modules` automaticamente.
 4. Execute o comando `npm run dev` para iniciar o servidor local.
 
-**Para deploy:**
-
-Apenas troque a URL da homepage na pasta `package.json`, seguindo o padrão:
-
-```
-"homepage": "https://NUME-DE-USUARIO.github.io/NOME-DO-REPOSITORIO"
-```
-
-Após essa alteração, basta executar:
-
-```
-npm run deploy
-```
-
-A aplicação será enviada para produção.
