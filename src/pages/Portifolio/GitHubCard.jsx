@@ -89,7 +89,6 @@ function GitHubCard({ title, description, link, languages }) {
               </Typography>
             </Box>
             <Box>
-              <Typography variant="body2">Linguagens Principais:</Typography>
               <Box
                 sx={{
                   marginTop: 1,

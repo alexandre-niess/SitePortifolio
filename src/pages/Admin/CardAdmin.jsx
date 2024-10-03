@@ -97,7 +97,6 @@ function CardAdmin({ id, title, description, link, languages, onEdit }) {
               </Typography>
             </Box>
             <Box>
-              <Typography variant="body2">Linguagens Principais:</Typography>
               <Box
                 sx={{
                   marginTop: 1,
