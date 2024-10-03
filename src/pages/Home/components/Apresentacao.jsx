@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 export default function Apresentacao() {
   const [isMobile, setIsMobile] = useState(false); // Uso de useState diretamente
-
   useEffect(() => {
     function handleResize() {
       setIsMobile(window.innerWidth < 600);
@@ -101,7 +100,7 @@ export default function Apresentacao() {
       >
         <Box
           component="img"
-          src="https://i.im.ge/2024/05/21/KuzXLY.novaimgsite-1.png"
+          src="/alexandre.png" // Caminho correto para a pasta public
           width={{ xs: "80%", sm: "60%", md: "50%", lg: "40%" }}
         />
       </Box>
