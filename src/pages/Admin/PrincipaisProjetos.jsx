@@ -39,7 +39,13 @@ const PrincipaisProjetos = () => {
 
   // Função para abrir o modal e definir o projeto selecionado
   const handleOpenModal = (projeto) => {
-    setSelectedProjeto(projeto);
+    setSelectedProjeto({
+      ...projeto,
+      icones:
+        projeto.icones && projeto.icones.length >= 2
+          ? projeto.icones
+          : [false, false], // Valores padrão caso `icones` não esteja definido corretamente
+    });
     setOpen(true);
   };
 
@@ -47,6 +53,15 @@ const PrincipaisProjetos = () => {
   const handleCloseModal = () => {
     setOpen(false);
     setSelectedProjeto(null);
+  };
+
+  // Função para atualizar o estado das checkboxes individualmente
+  const handleCheckboxChange = (index, checked) => {
+    setSelectedProjeto((prevProjeto) => {
+      const updatedIcons = [...prevProjeto.icones]; // Clone do array
+      updatedIcons[index] = checked; // Atualiza o valor da checkbox correta
+      return { ...prevProjeto, icones: updatedIcons }; // Retorna o novo estado
+    });
   };
 
   return (
@@ -112,6 +127,12 @@ const PrincipaisProjetos = () => {
                 variant="outlined"
                 fullWidth
                 sx={{ mb: 2 }}
+                onChange={(e) =>
+                  setSelectedProjeto({
+                    ...selectedProjeto,
+                    titulo: e.target.value,
+                  })
+                } // Permitir a edição do título
               />
               <TextField
                 label="Descrição"
@@ -121,14 +142,46 @@ const PrincipaisProjetos = () => {
                 rows={4}
                 fullWidth
                 sx={{ mb: 2 }}
+                onChange={(e) =>
+                  setSelectedProjeto({
+                    ...selectedProjeto,
+                    descricao: e.target.value,
+                  })
+                } // Permitir a edição da descrição
               />
               <Box sx={{ mb: 2 }}>
                 <FormControlLabel
-                  control={<Checkbox checked={selectedProjeto.icones[0]} />}
+                  control={
+                    <Checkbox
+                      checked={selectedProjeto.icones?.[0] ?? false}
+                      onChange={(e) =>
+                        setSelectedProjeto({
+                          ...selectedProjeto,
+                          icones: [
+                            e.target.checked,
+                            selectedProjeto.icones?.[1] ?? false,
+                          ],
+                        })
+                      }
+                    />
+                  }
                   label="Brush Icon"
                 />
                 <FormControlLabel
-                  control={<Checkbox checked={selectedProjeto.icones[1]} />}
+                  control={
+                    <Checkbox
+                      checked={selectedProjeto.icones?.[1] ?? false}
+                      onChange={(e) =>
+                        setSelectedProjeto({
+                          ...selectedProjeto,
+                          icones: [
+                            selectedProjeto.icones?.[0] ?? false,
+                            e.target.checked,
+                          ],
+                        })
+                      }
+                    />
+                  }
                   label="Terminal Icon"
                 />
               </Box>
