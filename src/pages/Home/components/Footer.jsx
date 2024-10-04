@@ -66,7 +66,7 @@ function Footer() {
           <Box sx={{ display: "flex", alignItems: "center", gap: "20px" }}>
             <img
               style={{ width: "35px", height: "auto" }}
-              src={"https://svgshare.com/i/15xb.svg"}
+              src={"/logo_purple.svg"}
             />
             <Typography variant="h6" color="text.default">
               Alexandre Niess

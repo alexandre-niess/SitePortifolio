@@ -12,9 +12,6 @@ const palavras = [
   "UX DESIGN",
 ];
 
-// URL da imagem
-const imageUrl = "https://i.im.ge/2024/05/09/ZfUIAT.decoration.png";
-
 export default function Ticker() {
   const [animationDuration, setAnimationDuration] = React.useState(25); // Define a duração padrão da animação
 

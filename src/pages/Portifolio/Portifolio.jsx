@@ -124,7 +124,7 @@ export function Portifolio() {
             >
               Ver no GitHub
               <img
-                src="https://svgshare.com/i/167Y.svg"
+                src="/github_logo_green.svg"
                 alt="GitHub Icon"
                 style={{ marginLeft: "8px", width: "18px", height: "auto" }}
               />
@@ -155,7 +155,7 @@ export function Portifolio() {
             >
               Ver no Behance
               <img
-                src="https://svgshare.com/i/167P.svg"
+                src="/behance_logo.svg"
                 alt="Behance Icon"
                 style={{ marginLeft: "8px", width: "18px", height: "auto" }}
               />

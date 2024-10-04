@@ -57,8 +57,8 @@ function Navbar() {
         >
           <img
             id="logo"
-            src="https://svgshare.com/i/15z8.svg"
-            style={{ height: "15%", width: "15%", marginRight: "15px" }}
+            src="/logo_white.svg"
+            style={{ height: "7%", width: "7%", marginRight: "15px" }}
           />
           <Typography variant="h6">Portfólio</Typography>
         </Link>

@@ -74,7 +74,7 @@ function GitHubCard({ title, description, link, languages }) {
               <Typography variant="body1">{tituloAjustado(title)}</Typography>
               <Box
                 component="img"
-                src="https://svgshare.com/i/15zL.svg"
+                src="/github_logo.svg"
                 sx={{ height: 30, width: 30 }}
                 alt="Logo"
                 marginLeft="10px"
