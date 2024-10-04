@@ -26,10 +26,13 @@ export default function PrincipaisProjetos() {
         const querySnapshot = await getDocs(
           collection(db, "projetosDestacados")
         );
-        const projetosList = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
+        const projetosList = querySnapshot.docs
+          .map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          }))
+          .sort((a, b) => a.posicao - b.posicao); // Ordenação por 'posicao'
+
         setProjects(projetosList); // Atualiza o estado com os projetos do Firestore
       } catch (error) {
         console.error("Erro ao buscar projetos: ", error);
@@ -114,7 +117,7 @@ export default function PrincipaisProjetos() {
                 variant="body2"
                 fontWeight="bold"
               >
-                {selectedFeature.titulo}
+                {selectedFeature.titulo} | {selectedFeature.ano}
               </Typography>
               <Typography
                 color="text.secondary"
@@ -153,7 +156,7 @@ export default function PrincipaisProjetos() {
             useFlexGap
             sx={{ width: "100%", display: { xs: "none", sm: "flex" } }}
           >
-            {projects.map(({ titulo, descricao, icones }, index) => (
+            {projects.map(({ titulo, descricao, icones, ano }, index) => (
               <Card
                 key={index}
                 variant="outlined"
@@ -188,12 +191,26 @@ export default function PrincipaisProjetos() {
                       <div>
                         {icones[0] && (
                           <Tooltip title="Design">
-                            <BrushIcon />
+                            <BrushIcon
+                              sx={{
+                                color:
+                                  selectedItemIndex === index
+                                    ? "primary.main"
+                                    : "#E0E0E0", // Cor #E0E0E0 quando não ativo
+                              }}
+                            />
                           </Tooltip>
                         )}
                         {icones[1] && (
                           <Tooltip title="Programação">
-                            <TerminalIcon />
+                            <TerminalIcon
+                              sx={{
+                                color:
+                                  selectedItemIndex === index
+                                    ? "primary.main"
+                                    : "#E0E0E0", // Cor #E0E0E0 quando não ativo
+                              }}
+                            />
                           </Tooltip>
                         )}
                       </div>
@@ -205,7 +222,7 @@ export default function PrincipaisProjetos() {
                       variant="body2"
                       fontWeight="bold"
                     >
-                      {titulo}
+                      {titulo} | {ano}
                     </Typography>
                     <Typography
                       color="text.secondary"
