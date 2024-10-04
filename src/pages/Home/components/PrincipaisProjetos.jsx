@@ -126,7 +126,7 @@ export default function PrincipaisProjetos() {
               >
                 {selectedFeature.descricao}
               </Typography>
-              <Link to="portifolio" style={{ textDecoration: "none" }}>
+              <Link to="portfolio" style={{ textDecoration: "none" }}>
                 <Typography
                   color="secondary"
                   variant="body2"

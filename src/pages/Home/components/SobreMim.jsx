@@ -41,7 +41,7 @@ export default function SobreMim() {
             unificada. Este é o meu espaço digital, onde apresento meu trabalho
             e minha jornada de aprendizado.
           </Typography>
-          <Link to="portifolio" style={{ textDecoration: "none" }}>
+          <Link to="portfolio" style={{ textDecoration: "none" }}>
             <Button
               variant="contained"
               color="secondary"
