@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
@@ -9,67 +9,41 @@ import { Link } from "react-router-dom";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
-import DevicesRoundedIcon from "@mui/icons-material/DevicesRounded";
-import EdgesensorHighRoundedIcon from "@mui/icons-material/EdgesensorHighRounded";
-import ViewQuiltRoundedIcon from "@mui/icons-material/ViewQuiltRounded";
 import TerminalIcon from "@mui/icons-material/Terminal";
 import BrushIcon from "@mui/icons-material/Brush";
 import Tooltip from "@mui/material/Tooltip";
-
-const items = [
-  {
-    icon: (
-      <div>
-        <Tooltip title="Design">
-          <BrushIcon />{" "}
-        </Tooltip>
-        <Tooltip title="Programação">
-          <TerminalIcon />
-        </Tooltip>
-      </div>
-    ),
-    title: "Valle Consultores | 2024",
-    description:
-      "Participei de todas as etapas do emissor de NFS-e Valle Consultores. Desde a criação do design até a programação do site. ",
-    imageLight: 'url("https://i.im.ge/2024/05/09/ZzFl56.thumb2.png")',
-  },
-  {
-    icon: (
-      <Tooltip title="Design">
-        <BrushIcon />
-      </Tooltip>
-    ),
-    title: "Nubank - NuCommunity | 2024",
-    description: (
-      <div>
-        No meu mais recente trabalho para a NuCommunity, criei um design que foi
-        utilizado como capa do site da comunidade. Ela ficou no ar do dia
-        15/04/2024 até o dia 30/04/2024. <br />
-      </div>
-    ),
-    imageLight: 'url("https://i.im.ge/2024/05/09/Zzr7yM.thumb.png")',
-  },
-  {
-    icon: (
-      <Tooltip title="Design">
-        <BrushIcon />
-      </Tooltip>
-    ),
-    title: "PUC Minas | 2023",
-    description:
-      "Esse trabalho foi feito para o instagram de computação da PUC Minas. O objetivo era divulgar o curso de Ciência da Computação e mostrar um pouco do que é feito na faculdade.",
-    imageLight: 'url("https://i.im.ge/2024/05/09/ZzFddh.thumb3.png")',
-  },
-];
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../../../firebaseConfig";
 
 export default function PrincipaisProjetos() {
-  const [selectedItemIndex, setSelectedItemIndex] = React.useState(0);
+  const [selectedItemIndex, setSelectedItemIndex] = useState(0);
+  const [projects, setProjects] = useState([]); // Estado para armazenar os dados dinâmicos da coleção
+
+  // Função para buscar dados da coleção "projetosDestacados"
+  useEffect(() => {
+    const fetchProjetos = async () => {
+      try {
+        const querySnapshot = await getDocs(
+          collection(db, "projetosDestacados")
+        );
+        const projetosList = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setProjects(projetosList); // Atualiza o estado com os projetos do Firestore
+      } catch (error) {
+        console.error("Erro ao buscar projetos: ", error);
+      }
+    };
+
+    fetchProjetos();
+  }, []);
 
   const handleItemClick = (index) => {
     setSelectedItemIndex(index);
   };
 
-  const selectedFeature = items[selectedItemIndex];
+  const selectedFeature = projects[selectedItemIndex] || {}; // Verifica se há um projeto selecionado
 
   return (
     <Container id="principais-projetos" sx={{ py: { xs: 8, sm: 16 } }}>
@@ -100,20 +74,14 @@ export default function PrincipaisProjetos() {
             gap={1}
             sx={{ display: { xs: "auto", sm: "none" } }}
           >
-            {items.map(({ title }, index) => (
+            {projects.map(({ titulo }, index) => (
               <Chip
                 key={index}
-                label={title}
+                label={titulo}
                 onClick={() => handleItemClick(index)}
                 sx={{
                   borderColor: (theme) => {
                     return selectedItemIndex === index ? "secondary.light" : "";
-                  },
-                  background: (theme) => {
-                    if (theme.palette.mode === "light") {
-                      return selectedItemIndex === index ? "none" : "";
-                    }
-                    return selectedItemIndex === index ? "none" : "";
                   },
                   backgroundColor:
                     selectedItemIndex === index ? "secondary.main" : "",
@@ -134,10 +102,7 @@ export default function PrincipaisProjetos() {
           >
             <Box
               sx={{
-                backgroundImage: (theme) =>
-                  theme.palette.mode === "light"
-                    ? items[selectedItemIndex].imageLight
-                    : items[selectedItemIndex].imageDark,
+                backgroundImage: `url(${selectedFeature.imagem})`, // Exibe a imagem do projeto
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 minHeight: 280,
@@ -149,14 +114,14 @@ export default function PrincipaisProjetos() {
                 variant="body2"
                 fontWeight="bold"
               >
-                {selectedFeature.title}
+                {selectedFeature.titulo}
               </Typography>
               <Typography
                 color="text.secondary"
                 variant="body2"
                 sx={{ my: 0.5 }}
               >
-                {selectedFeature.description}
+                {selectedFeature.descricao}
               </Typography>
               <Link to="portifolio" style={{ textDecoration: "none" }}>
                 <Typography
@@ -188,7 +153,7 @@ export default function PrincipaisProjetos() {
             useFlexGap
             sx={{ width: "100%", display: { xs: "none", sm: "flex" } }}
           >
-            {items.map(({ icon, title, description }, index) => (
+            {projects.map(({ titulo, descricao, icones }, index) => (
               <Card
                 key={index}
                 variant="outlined"
@@ -198,18 +163,12 @@ export default function PrincipaisProjetos() {
                   p: 3,
                   height: "fit-content",
                   width: "100%",
-                  background: "none",
                   backgroundColor:
                     selectedItemIndex === index ? "action.selected" : undefined,
                   borderColor: (theme) => {
-                    if (theme.palette.mode === "light") {
-                      return selectedItemIndex === index
-                        ? "primary.light"
-                        : "grey.200";
-                    }
                     return selectedItemIndex === index
-                      ? "primary.dark"
-                      : "grey.800";
+                      ? "primary.light"
+                      : "grey.200";
                   },
                 }}
               >
@@ -223,21 +182,22 @@ export default function PrincipaisProjetos() {
                     gap: 2.5,
                   }}
                 >
-                  <Box
-                    sx={{
-                      color: (theme) => {
-                        if (theme.palette.mode === "light") {
-                          return selectedItemIndex === index
-                            ? "primary.main"
-                            : "grey.300";
-                        }
-                        return selectedItemIndex === index
-                          ? "primary.main"
-                          : "grey.700";
-                      },
-                    }}
-                  >
-                    {icon}
+                  <Box>
+                    {/* Renderizar ícones (se existirem) */}
+                    {icones && (
+                      <div>
+                        {icones[0] && (
+                          <Tooltip title="Design">
+                            <BrushIcon />
+                          </Tooltip>
+                        )}
+                        {icones[1] && (
+                          <Tooltip title="Programação">
+                            <TerminalIcon />
+                          </Tooltip>
+                        )}
+                      </div>
+                    )}
                   </Box>
                   <Box sx={{ textTransform: "none" }}>
                     <Typography
@@ -245,14 +205,14 @@ export default function PrincipaisProjetos() {
                       variant="body2"
                       fontWeight="bold"
                     >
-                      {title}
+                      {titulo}
                     </Typography>
                     <Typography
                       color="text.secondary"
                       variant="body2"
                       sx={{ my: 0.5 }}
                     >
-                      {description}
+                      {descricao}
                     </Typography>
                   </Box>
                 </Box>
@@ -281,10 +241,7 @@ export default function PrincipaisProjetos() {
                 width: 350,
                 height: 500,
                 backgroundSize: "contain",
-                backgroundImage: (theme) =>
-                  theme.palette.mode === "light"
-                    ? items[selectedItemIndex].imageLight
-                    : items[selectedItemIndex].imageDark,
+                backgroundImage: `url(${selectedFeature.imagem})`, // Exibe a imagem no card
               }}
             />
           </Card>
