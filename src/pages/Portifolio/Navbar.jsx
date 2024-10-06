@@ -2,11 +2,8 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import MenuItem from "@mui/material/MenuItem";
-import Drawer from "@mui/material/Drawer";
-import MenuIcon from "@mui/icons-material/Menu";
-import Voltar from "@mui/icons-material/ArrowBack";
 import { Link } from "react-router-dom";
+import Voltar from "@mui/icons-material/ArrowBack";
 
 function Navbar() {
   const [openDrawer, setOpenDrawer] = React.useState(false);
@@ -27,6 +24,7 @@ function Navbar() {
       setOpenDrawer(false);
     }
   };
+
   return (
     <>
       <Box
@@ -67,11 +65,21 @@ function Navbar() {
           variant="contained"
           color="secondary"
           onClick={() => scrollToSection("contato")}
-          sx={{ borderRadius: "100px", color: "#fff" }}
+          sx={{
+            borderRadius: "100px",
+            color: "#fff",
+            padding: "10px 20px", // Padding aplicado em todas as telas
+            textAlign: "center",
+            // Aplicar minWidth apenas em telas pequenas
+            minWidth: {
+              xs: "100px", // minWidth para telas pequenas
+            },
+          }}
         >
           Contato
         </Button>
       </Box>
+
       <Link to="/" style={{ textDecoration: "none" }}>
         <Typography
           variant="h6"
