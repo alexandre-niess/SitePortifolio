@@ -31,6 +31,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { Link } from "react-router-dom";
 import PrincipaisProjetos from "./PrincipaisProjetos";
+import Curriculo from "./Curriculo";
 
 export function Admin() {
   const [cardData, setCardData] = useState([]);
@@ -292,6 +293,7 @@ export function Admin() {
           marginRight: "2%",
         }}
       >
+        <Curriculo />
         <PrincipaisProjetos />
         <Box
           sx={{
