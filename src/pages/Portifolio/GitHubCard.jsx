@@ -30,9 +30,10 @@ function getColorForLanguage(language) {
     CSS: "#0084C5",
     JavaScript: "#EAB334",
     Markdown: "#0084C5",
+    Flutter: "#0084C5",
   };
 
-  return colors[language] || "default";
+  return colors[language] || "#0084C5";
 }
 
 function GitHubCard({ title, description, link, languages }) {
