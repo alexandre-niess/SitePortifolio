@@ -149,6 +149,7 @@ const PrincipaisProjetos = () => {
           alignItems: "center",
           marginTop: "2%",
           borderRadius: "10px",
+          backgroundColor: "#fff",
         }}
       >
         <Typography variant="h6" color="primary.main">

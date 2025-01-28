@@ -267,339 +267,343 @@ export function Admin() {
   return (
     <>
       <CssBaseline />
-      <Box
-        sx={{
-          display: "flex",
-          width: "100%",
-          height: "60px",
-          backgroundColor: "primary.main",
-          alignItems: "center",
-          justifyContent: "left",
-          padding: "0 16px",
-        }}
-      >
-        <Link to="/">
-          <IconButton sx={{ color: "#fff" }}>
-            <ArrowBackIosIcon />
-          </IconButton>
-        </Link>
-        <Typography variant="h6" color="white">
-          Painel do Admin
-        </Typography>
-      </Box>
-      <Box
-        sx={{
-          marginLeft: "2%",
-          marginRight: "2%",
-        }}
-      >
-        <Curriculo />
-        <PrincipaisProjetos />
+      <Box sx={{ backgroundColor: "#F6F6F6" }}>
         <Box
           sx={{
             display: "flex",
-            padding: 2,
-            boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
-            border: "1px solid #dddddd",
-            justifyContent: "space-between",
+            width: "100%",
+            height: "60px",
+            backgroundColor: "primary.main",
             alignItems: "center",
-            marginTop: "2%",
-            borderRadius: "10px",
+            justifyContent: "left",
+            padding: "0 16px",
           }}
         >
-          <Typography variant="h6" color="primary.main">
-            Projetos do GitHub
+          <Link to="/">
+            <IconButton sx={{ color: "#fff" }}>
+              <ArrowBackIosIcon />
+            </IconButton>
+          </Link>
+          <Typography variant="h6" color="white">
+            Painel do Admin
           </Typography>
+        </Box>
+        <Box
+          sx={{
+            marginLeft: "2%",
+            marginRight: "2%",
+          }}
+        >
+          <Curriculo />
+          <PrincipaisProjetos />
           <Box
             sx={{
               display: "flex",
-              gap: 2,
+              padding: 2,
+              boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
+              border: "1px solid #dddddd",
+              justifyContent: "space-between",
+              alignItems: "center",
+              marginTop: "2%",
+              borderRadius: "10px",
+              backgroundColor: "#fff",
             }}
           >
-            <Button
-              variant="outlined"
-              color="primary"
-              onClick={handleLanguageOpen}
-              sx={{ borderRadius: "1000px" }}
+            <Typography variant="h6" color="primary.main">
+              Projetos do GitHub
+            </Typography>
+            <Box
+              sx={{
+                display: "flex",
+                gap: 2,
+              }}
             >
-              Adicionar Linguagem
-            </Button>
+              <Button
+                variant="outlined"
+                color="primary"
+                onClick={handleLanguageOpen}
+                sx={{ borderRadius: "1000px" }}
+              >
+                Adicionar Linguagem
+              </Button>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleClickOpen}
+                sx={{ borderRadius: "1000px" }}
+              >
+                Adicionar Projeto
+              </Button>
+            </Box>
+          </Box>
+
+          <Box
+            sx={{
+              display: "flex",
+              overflowX: "auto",
+              padding: 2,
+              scrollbarWidth: "none", // Firefox
+              "&::-webkit-scrollbar": {
+                display: "none", // Chrome, Safari and Opera
+              },
+            }}
+          >
+            {loading ? (
+              <CircularProgress />
+            ) : (
+              cardData.map((data, index) => (
+                <Box
+                  key={index}
+                  sx={{
+                    minWidth: "300px",
+                    marginRight: 2,
+                  }}
+                >
+                  <CardAdmin {...data} onEdit={handleEditOpen} />
+                </Box>
+              ))
+            )}
+          </Box>
+
+          <Box
+            sx={{
+              display: "flex",
+              padding: 2,
+              boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
+              border: "1px solid #dddddd",
+              justifyContent: "space-between",
+              alignItems: "center",
+              borderRadius: "10px",
+              marginTop: "16px", // Adiciona espaço entre as seções
+              backgroundColor: "#fff",
+            }}
+          >
+            <Typography variant="h6" color="primary.main">
+              Projetos do Behance
+            </Typography>
             <Button
               variant="contained"
               color="primary"
-              onClick={handleClickOpen}
+              onClick={handleBehanceOpen}
               sx={{ borderRadius: "1000px" }}
             >
               Adicionar Projeto
             </Button>
           </Box>
-        </Box>
 
-        <Box
-          sx={{
-            display: "flex",
-            overflowX: "auto",
-            padding: 2,
-            scrollbarWidth: "none", // Firefox
-            "&::-webkit-scrollbar": {
-              display: "none", // Chrome, Safari and Opera
-            },
-          }}
-        >
-          {loading ? (
-            <CircularProgress />
-          ) : (
-            cardData.map((data, index) => (
-              <Box
-                key={index}
-                sx={{
-                  minWidth: "300px",
-                  marginRight: 2,
-                }}
-              >
-                <CardAdmin {...data} onEdit={handleEditOpen} />
-              </Box>
-            ))
-          )}
-        </Box>
-
-        <Box
-          sx={{
-            display: "flex",
-            padding: 2,
-            boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
-            border: "1px solid #dddddd",
-            justifyContent: "space-between",
-            alignItems: "center",
-            borderRadius: "10px",
-            marginTop: "16px", // Adiciona espaço entre as seções
-          }}
-        >
-          <Typography variant="h6" color="primary.main">
-            Projetos do Behance
-          </Typography>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={handleBehanceOpen}
-            sx={{ borderRadius: "1000px" }}
+          <Box
+            sx={{
+              display: "flex",
+              overflowX: "auto",
+              padding: 2,
+              scrollbarWidth: "none", // Firefox
+              "&::-webkit-scrollbar": {
+                display: "none", // Chrome, Safari and Opera
+              },
+            }}
           >
-            Adicionar Projeto
-          </Button>
-        </Box>
-
-        <Box
-          sx={{
-            display: "flex",
-            overflowX: "auto",
-            padding: 2,
-            scrollbarWidth: "none", // Firefox
-            "&::-webkit-scrollbar": {
-              display: "none", // Chrome, Safari and Opera
-            },
-          }}
-        >
-          {loading ? (
-            <CircularProgress />
-          ) : (
-            behanceProjects.map((project) => (
-              <Box
-                key={project.id}
-                sx={{
-                  minWidth: "300px",
-                  marginRight: 2,
-                }}
-              >
-                <div
-                  style={{
-                    width: "100%",
-                    height: 0,
-                    paddingBottom: `${(158 / 202) * 100}%`, // Calculando a proporção
-                    position: "relative",
+            {loading ? (
+              <CircularProgress />
+            ) : (
+              behanceProjects.map((project) => (
+                <Box
+                  key={project.id}
+                  sx={{
+                    minWidth: "300px",
+                    marginRight: 2,
                   }}
                 >
-                  {loading && (
-                    <div
-                      style={{
-                        position: "absolute",
-                        top: "50%",
-                        left: "50%",
-                        transform: "translate(-50%, -50%)",
-                      }}
-                    >
-                      <CircularProgress />
-                    </div>
-                  )}
-                  <iframe
-                    src={`https://www.behance.net/embed/project/${project.behanceId}?ilo0=1`} // Use the correct field for Behance ID
+                  <div
                     style={{
-                      position: "absolute",
                       width: "100%",
-                      height: "100%",
-                      top: 0,
-                      left: 0,
-                      display: loading ? "none" : "block",
-                    }}
-                    onLoad={() => setLoading(false)}
-                    allowFullScreen
-                    loading="eager"
-                    frameBorder="0"
-                    allow="clipboard-write"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                  ></iframe>
-                  <IconButton
-                    onClick={() => handleEditBehanceOpen(project.id)}
-                    sx={{
-                      position: "absolute",
-                      top: "8px",
-                      right: "8px",
-                      color: "#fff",
-                      backgroundColor: "rgba(0, 0, 0, 0.5)",
+                      height: 0,
+                      paddingBottom: `${(158 / 202) * 100}%`, // Calculando a proporção
+                      position: "relative",
                     }}
                   >
-                    <EditIcon />
-                  </IconButton>
-                </div>
-              </Box>
-            ))
-          )}
+                    {loading && (
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: "50%",
+                          left: "50%",
+                          transform: "translate(-50%, -50%)",
+                        }}
+                      >
+                        <CircularProgress />
+                      </div>
+                    )}
+                    <iframe
+                      src={`https://www.behance.net/embed/project/${project.behanceId}?ilo0=1`} // Use the correct field for Behance ID
+                      style={{
+                        position: "absolute",
+                        width: "100%",
+                        height: "100%",
+                        top: 0,
+                        left: 0,
+                        display: loading ? "none" : "block",
+                      }}
+                      onLoad={() => setLoading(false)}
+                      allowFullScreen
+                      loading="eager"
+                      frameBorder="0"
+                      allow="clipboard-write"
+                      referrerPolicy="strict-origin-when-cross-origin"
+                    ></iframe>
+                    <IconButton
+                      onClick={() => handleEditBehanceOpen(project.id)}
+                      sx={{
+                        position: "absolute",
+                        top: "8px",
+                        right: "8px",
+                        color: "#fff",
+                        backgroundColor: "rgba(0, 0, 0, 0.5)",
+                      }}
+                    >
+                      <EditIcon />
+                    </IconButton>
+                  </div>
+                </Box>
+              ))
+            )}
+          </Box>
+
+          <Dialog open={open} onClose={handleClose}>
+            <DialogTitle>
+              {editMode ? "Editar Projeto" : "Adicionar Novo Projeto"}
+            </DialogTitle>
+            <DialogContent>
+              <TextField
+                margin="dense"
+                label="Nome do Projeto"
+                fullWidth
+                variant="outlined"
+                value={projectName}
+                onChange={(e) => setProjectName(e.target.value)}
+              />
+              <TextField
+                margin="dense"
+                label="Descrição"
+                fullWidth
+                variant="outlined"
+                multiline
+                rows={4}
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+              <TextField
+                margin="dense"
+                label="Linguagens"
+                fullWidth
+                variant="outlined"
+                select
+                SelectProps={{
+                  multiple: true,
+                  value: languages,
+                  onChange: (e) => setLanguages(e.target.value),
+                }}
+              >
+                {languagesData.map((linguagem) => (
+                  <MenuItem key={linguagem} value={linguagem}>
+                    {linguagem}
+                  </MenuItem>
+                ))}
+              </TextField>
+              <TextField
+                margin="dense"
+                label="Link do GitHub"
+                fullWidth
+                variant="outlined"
+                value={githubLink}
+                onChange={(e) => setGithubLink(e.target.value)}
+              />
+              <TextField
+                margin="dense"
+                label="Posição"
+                fullWidth
+                variant="outlined"
+                type="number"
+                value={posicao}
+                onChange={(e) => setPosicao(parseInt(e.target.value))}
+              />
+            </DialogContent>
+            <DialogActions>
+              {editMode && (
+                <Button onClick={handleDelete} color="secondary">
+                  Excluir
+                </Button>
+              )}
+              <Button onClick={handleClose} color="primary">
+                Cancelar
+              </Button>
+              <Button onClick={handleSave} color="primary">
+                Salvar
+              </Button>
+            </DialogActions>
+          </Dialog>
+
+          <Dialog open={behanceOpen} onClose={handleBehanceClose}>
+            <DialogTitle>
+              {editMode
+                ? "Editar Projeto do Behance"
+                : "Adicionar Novo Projeto do Behance"}
+            </DialogTitle>
+            <DialogContent>
+              <TextField
+                margin="dense"
+                label="Código do Behance"
+                fullWidth
+                variant="outlined"
+                value={behanceId}
+                onChange={(e) => setBehanceId(e.target.value)}
+              />
+              <TextField
+                margin="dense"
+                label="Posição"
+                fullWidth
+                variant="outlined"
+                type="number"
+                value={posicao}
+                onChange={(e) => setPosicao(parseInt(e.target.value))}
+              />
+            </DialogContent>
+            <DialogActions>
+              {editMode && (
+                <Button onClick={handleDeleteBehance} color="secondary">
+                  Excluir
+                </Button>
+              )}
+              <Button onClick={handleBehanceClose} color="primary">
+                Cancelar
+              </Button>
+              <Button onClick={handleSaveBehance} color="primary">
+                Salvar
+              </Button>
+            </DialogActions>
+          </Dialog>
+
+          <Dialog open={languageOpen} onClose={handleLanguageClose}>
+            <DialogTitle>Adicionar Nova Linguagem</DialogTitle>
+            <DialogContent>
+              <TextField
+                margin="dense"
+                label="Nome da Linguagem"
+                fullWidth
+                variant="outlined"
+                value={newLanguage}
+                onChange={(e) => setNewLanguage(e.target.value)}
+              />
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleLanguageClose} color="primary">
+                Cancelar
+              </Button>
+              <Button onClick={handleSaveLanguage} color="primary">
+                Salvar
+              </Button>
+            </DialogActions>
+          </Dialog>
         </Box>
-
-        <Dialog open={open} onClose={handleClose}>
-          <DialogTitle>
-            {editMode ? "Editar Projeto" : "Adicionar Novo Projeto"}
-          </DialogTitle>
-          <DialogContent>
-            <TextField
-              margin="dense"
-              label="Nome do Projeto"
-              fullWidth
-              variant="outlined"
-              value={projectName}
-              onChange={(e) => setProjectName(e.target.value)}
-            />
-            <TextField
-              margin="dense"
-              label="Descrição"
-              fullWidth
-              variant="outlined"
-              multiline
-              rows={4}
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-            <TextField
-              margin="dense"
-              label="Linguagens"
-              fullWidth
-              variant="outlined"
-              select
-              SelectProps={{
-                multiple: true,
-                value: languages,
-                onChange: (e) => setLanguages(e.target.value),
-              }}
-            >
-              {languagesData.map((linguagem) => (
-                <MenuItem key={linguagem} value={linguagem}>
-                  {linguagem}
-                </MenuItem>
-              ))}
-            </TextField>
-            <TextField
-              margin="dense"
-              label="Link do GitHub"
-              fullWidth
-              variant="outlined"
-              value={githubLink}
-              onChange={(e) => setGithubLink(e.target.value)}
-            />
-            <TextField
-              margin="dense"
-              label="Posição"
-              fullWidth
-              variant="outlined"
-              type="number"
-              value={posicao}
-              onChange={(e) => setPosicao(parseInt(e.target.value))}
-            />
-          </DialogContent>
-          <DialogActions>
-            {editMode && (
-              <Button onClick={handleDelete} color="secondary">
-                Excluir
-              </Button>
-            )}
-            <Button onClick={handleClose} color="primary">
-              Cancelar
-            </Button>
-            <Button onClick={handleSave} color="primary">
-              Salvar
-            </Button>
-          </DialogActions>
-        </Dialog>
-
-        <Dialog open={behanceOpen} onClose={handleBehanceClose}>
-          <DialogTitle>
-            {editMode
-              ? "Editar Projeto do Behance"
-              : "Adicionar Novo Projeto do Behance"}
-          </DialogTitle>
-          <DialogContent>
-            <TextField
-              margin="dense"
-              label="Código do Behance"
-              fullWidth
-              variant="outlined"
-              value={behanceId}
-              onChange={(e) => setBehanceId(e.target.value)}
-            />
-            <TextField
-              margin="dense"
-              label="Posição"
-              fullWidth
-              variant="outlined"
-              type="number"
-              value={posicao}
-              onChange={(e) => setPosicao(parseInt(e.target.value))}
-            />
-          </DialogContent>
-          <DialogActions>
-            {editMode && (
-              <Button onClick={handleDeleteBehance} color="secondary">
-                Excluir
-              </Button>
-            )}
-            <Button onClick={handleBehanceClose} color="primary">
-              Cancelar
-            </Button>
-            <Button onClick={handleSaveBehance} color="primary">
-              Salvar
-            </Button>
-          </DialogActions>
-        </Dialog>
-
-        <Dialog open={languageOpen} onClose={handleLanguageClose}>
-          <DialogTitle>Adicionar Nova Linguagem</DialogTitle>
-          <DialogContent>
-            <TextField
-              margin="dense"
-              label="Nome da Linguagem"
-              fullWidth
-              variant="outlined"
-              value={newLanguage}
-              onChange={(e) => setNewLanguage(e.target.value)}
-            />
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleLanguageClose} color="primary">
-              Cancelar
-            </Button>
-            <Button onClick={handleSaveLanguage} color="primary">
-              Salvar
-            </Button>
-          </DialogActions>
-        </Dialog>
       </Box>
     </>
   );
