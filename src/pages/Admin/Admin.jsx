@@ -50,6 +50,7 @@ export function Admin() {
   const [loading, setLoading] = useState(true);
   const [behanceOpen, setBehanceOpen] = useState(false);
   const [behanceId, setBehanceId] = useState("");
+  const [ano, setAno] = useState("");
   const [bannerUrl, setBannerUrl] = useState(
     "https://firebasestorage.googleapis.com/v0/b/portfolio-alexandre-niess.appspot.com/o/image%203.jpg?alt=media&token=0b4900f7-7769-4e12-8f1b-88656ef686f0"
   );
@@ -126,6 +127,7 @@ export function Admin() {
     setLanguages(project.languages);
     setGithubLink(project.link);
     setPosicao(project.posicao);
+    setAno(project.ano || ""); // Adicionar o ano
     setEditMode(true);
     setOpen(true);
   };
@@ -133,8 +135,9 @@ export function Admin() {
   const handleEditBehanceOpen = (id) => {
     const project = behanceProjects.find((proj) => proj.id === id);
     setCurrentId(id);
-    setBehanceId(project.behanceId); // Use the correct field for Behance ID
+    setBehanceId(project.behanceId);
     setPosicao(project.posicao);
+    setAno(project.ano || ""); // Adicionar o ano
     setEditMode(true);
     setBehanceOpen(true);
   };
@@ -175,6 +178,7 @@ export function Admin() {
         languages,
         link: githubLink,
         posicao,
+        ano, // Adicionar o ano
         createdAt: serverTimestamp(),
       };
       if (editMode) {
@@ -195,6 +199,7 @@ export function Admin() {
       setDescription("");
       setLanguages([]);
       setGithubLink("");
+      setAno(""); // Resetar o ano
     } catch (error) {
       console.error("Erro ao salvar projeto:", error);
     }
@@ -203,8 +208,9 @@ export function Admin() {
   const handleSaveBehance = async () => {
     try {
       const newBehanceProject = {
-        behanceId, // Save the Behance ID correctly
+        behanceId,
         posicao,
+        ano, // Adicionar o ano
         createdAt: serverTimestamp(),
       };
       if (editMode) {
@@ -230,6 +236,7 @@ export function Admin() {
       }
       setBehanceOpen(false);
       setBehanceId("");
+      setAno(""); // Resetar o ano
     } catch (error) {
       console.error("Erro ao salvar projeto do Behance:", error);
     }
@@ -519,6 +526,15 @@ export function Admin() {
               />
               <TextField
                 margin="dense"
+                label="Ano"
+                fullWidth
+                variant="outlined"
+                type="number"
+                value={ano}
+                onChange={(e) => setAno(e.target.value)}
+              />
+              <TextField
+                margin="dense"
                 label="Posição"
                 fullWidth
                 variant="outlined"
@@ -556,6 +572,15 @@ export function Admin() {
                 variant="outlined"
                 value={behanceId}
                 onChange={(e) => setBehanceId(e.target.value)}
+              />
+              <TextField
+                margin="dense"
+                label="Ano"
+                fullWidth
+                variant="outlined"
+                type="number"
+                value={ano}
+                onChange={(e) => setAno(e.target.value)}
               />
               <TextField
                 margin="dense"

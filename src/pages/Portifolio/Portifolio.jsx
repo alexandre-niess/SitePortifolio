@@ -8,6 +8,7 @@ import {
   Container,
   CssBaseline,
   CircularProgress,
+  Divider,
 } from "@mui/material";
 import { ToggleButton, ToggleButtonGroup } from "@mui/material";
 import Navbar from "./Navbar";
@@ -133,13 +134,36 @@ export function Portifolio() {
               {loading ? (
                 <CircularProgress />
               ) : (
-                <Grid container spacing={1}>
-                  {cardData.map((data, index) => (
-                    <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
-                      <GitHubCard {...data} />
-                    </Grid>
-                  ))}
-                </Grid>
+                <>
+                  {Object.entries(
+                    cardData.reduce((acc, project) => {
+                      const year = project.ano || "Outros"; // Use "Outros" para projetos sem ano
+                      if (!acc[year]) acc[year] = [];
+                      acc[year].push(project);
+                      return acc;
+                    }, {})
+                  )
+                    .sort(([a], [b]) => b - a) // Ordena por ano de forma decrescente
+                    .map(([year, projects]) => (
+                      <Box key={year} sx={{ marginBottom: "40px" }}>
+                        <Typography variant="h6" color="text.primary">
+                          {year}
+                        </Typography>
+                        <Divider
+                          sx={{
+                            marginBottom: "20px",
+                          }}
+                        />
+                        <Grid container spacing={1}>
+                          {projects.map((data, index) => (
+                            <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+                              <GitHubCard {...data} />
+                            </Grid>
+                          ))}
+                        </Grid>
+                      </Box>
+                    ))}
+                </>
               )}
             </Box>
           </>
@@ -164,36 +188,55 @@ export function Portifolio() {
               {loading ? (
                 <CircularProgress />
               ) : (
-                <Grid container spacing={2}>
-                  {behanceProjects.map((project, index) => (
-                    <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
-                      <div
-                        style={{
-                          width: "100%",
-                          height: 0,
-                          paddingBottom: `${(158 / 202) * 100}%`, // Calculando a proporção
-                          position: "relative",
-                        }}
-                      >
-                        <iframe
-                          src={`https://www.behance.net/embed/project/${project.behanceId}?ilo0=1`}
-                          style={{
-                            position: "absolute",
-                            width: "100%",
-                            height: "100%",
-                            top: 0,
-                            left: 0,
-                          }}
-                          allowFullScreen
-                          loading="eager"
-                          frameBorder="0"
-                          allow="clipboard-write"
-                          referrerPolicy="strict-origin-when-cross-origin"
-                        ></iframe>
-                      </div>
-                    </Grid>
-                  ))}
-                </Grid>
+                <>
+                  {Object.entries(
+                    behanceProjects.reduce((acc, project) => {
+                      const year = project.ano || "Outros"; // Use "Outros" para projetos sem ano
+                      if (!acc[year]) acc[year] = [];
+                      acc[year].push(project);
+                      return acc;
+                    }, {})
+                  )
+                    .sort(([a], [b]) => b - a) // Ordena por ano de forma decrescente
+                    .map(([year, projects]) => (
+                      <Box key={year} sx={{ marginBottom: "40px" }}>
+                        <Typography variant="h6" color="text.primary">
+                          {year}
+                        </Typography>
+                        <Divider sx={{ marginBottom: "20px" }} />
+                        <Grid container spacing={2}>
+                          {projects.map((project, index) => (
+                            <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+                              <div
+                                style={{
+                                  width: "100%",
+                                  height: 0,
+                                  paddingBottom: `${(158 / 202) * 100}%`, // Calculando a proporção
+                                  position: "relative",
+                                }}
+                              >
+                                <iframe
+                                  src={`https://www.behance.net/embed/project/${project.behanceId}?ilo0=1`}
+                                  style={{
+                                    position: "absolute",
+                                    width: "100%",
+                                    height: "100%",
+                                    top: 0,
+                                    left: 0,
+                                  }}
+                                  allowFullScreen
+                                  loading="eager"
+                                  frameBorder="0"
+                                  allow="clipboard-write"
+                                  referrerPolicy="strict-origin-when-cross-origin"
+                                ></iframe>
+                              </div>
+                            </Grid>
+                          ))}
+                        </Grid>
+                      </Box>
+                    ))}
+                </>
               )}
             </Box>
           </>
